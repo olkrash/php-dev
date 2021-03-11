@@ -49,19 +49,19 @@ echo "</ul>";
 //$digits = deleteNegtives($digits);
 // Теперь $digits содержит только положительные числа
 
-$digits = [2, 10, -2, 4, -5, 1, -6, 200, 1.6, 95];
-function deleteNegatives(array $arr): array
-{
-    $result = [];
-    foreach ($arr as $digit) {
-        if ($digit >= 0) {
-            array_push($result, $digit);
-        }
-    }
-    return $result;
-}
-
-print_r(deleteNegatives($digits));
+//$digits = [2, 10, -2, 4, -5, 1, -6, 200, 1.6, 95];
+//function deleteNegatives(array $arr): array
+//{
+//    $result = [];
+//    foreach ($arr as $digit) {
+//        if ($digit >= 0) {
+//            array_push($result, $digit);
+//        }
+//    }
+//    return $result;
+//}
+//
+//print_r(deleteNegatives($digits));
 
 //Квадратное уравнение
 //Написать функцию, которая решает квадратное уравнение. Функция принимает 3 аргумента (коефициенты).
