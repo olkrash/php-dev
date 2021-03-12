@@ -1,0 +1,25 @@
+<?php
+declare(strict_types=1);
+session_start();
+$answer1 = $_SESSION['answer1'];
+$answer2 = $_SESSION['answer2'];
+$answer3 = $_POST['answer3'];
+if(($answer1 == 2) && ($answer2 == 4) && ($answer3 == 6) ){
+    echo 'Good for you !';
+} else{
+    echo 'You need some more math in your life.';
+}
+session_destroy();
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session3</title>
+</head>
+<body>
+
+
+</body>
+</html>
