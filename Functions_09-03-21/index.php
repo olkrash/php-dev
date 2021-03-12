@@ -69,24 +69,23 @@ declare(strict_types=1);
 //• Массив с двумя корнями х1, х2, если D > 0
 //• Один корень х, если D = 0
 //• false, если D < 0 Подсказки:
-function quadraticEquation($a = 0, $b = 0,$c = 0 ){
-$d = $b * $b - 4 * $a * $c;
-if ($d < 0)
+function quadraticEquation($a = 0, $b = 0, $c = 0)
 {
-    return false;
+    $d = $b * $b - 4 * $a * $c;
+    if ($d < 0) {
+        return false;
+    } elseif ($d == 0) {
+        return (0 - $b) / (2 * $a);
+    } elseif ($d > 0) {
+        $x1 = (0 - $b - sqrt($d)) / (2 * $a);
+        $x2 = (0 - $b + sqrt($d)) / (2 * $a);
+        return array('Первый корень' => $x1, 'Второй корень' => $x2);
+    }
 }
-elseif ( $d == 0){
-    return (0 - $b) / (2 * $a);
-}
-elseif ($d > 0){
-    $x1 = ( 0 - $b - sqrt ($d)) / ( 2 * $a);
-    $x2 = ( 0 - $b + sqrt ($d)) / ( 2 * $a);
-    return array ('Первый корень' => $x1,  'Второй корень' => $x2);
-}
-}
-//$answer = quadraticEquation(8, 5, 7);
-//echo "The answer is .(quadraticEquation(8, 5, 7));";
-quadraticEquation(8, 5, 7);
+
+$answer = quadraticEquation(8, 10, 1);
+echo "The answer is ";
+print_r($answer);
 
 // Работа с массивами
 /*
