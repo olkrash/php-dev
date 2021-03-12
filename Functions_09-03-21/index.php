@@ -21,23 +21,23 @@ declare(strict_types=1);
 //    <li><a href="#">Кнопка 10</a></li>
 //</ul>
 
-$button = [
-    "Кнопка 10",
-    "Кнопка 9",
-    "Кнопка 8",
-    "Кнопка 7",
-    "Кнопка 6",
-    "Кнопка 5",
-    "Кнопка 4",
-    "Кнопка 3",
-    "Кнопка 2",
-    "Кнопка 1",];
-natsort($button);
-echo "<ul>";
-foreach ($button as $val) {
-    echo "<li><a>$val</a>.</li>";
-}
-echo "</ul>";
+//$button = [
+//    "Кнопка 10",
+//    "Кнопка 9",
+//    "Кнопка 8",
+//    "Кнопка 7",
+//    "Кнопка 6",
+//    "Кнопка 5",
+//    "Кнопка 4",
+//    "Кнопка 3",
+//    "Кнопка 2",
+//    "Кнопка 1",];
+//natsort($button);
+//echo "<ul>";
+//foreach ($button as $val) {
+//    echo "<li><a>$val</a>.</li>";
+//}
+//echo "</ul>";
 
 //Удаление отрицательных элементов из массива
 //Есть массив с элементами (отрицательными и положительными). Нужно написать такую функцию deleteNegtives(), которая
@@ -70,9 +70,23 @@ echo "</ul>";
 //• Один корень х, если D = 0
 //• false, если D < 0 Подсказки:
 function quadraticEquation($a = 0, $b = 0,$c = 0 ){
-
+$d = $b * $b - 4 * $a * $c;
+if ($d < 0)
+{
+    return false;
 }
-
+elseif ( $d == 0){
+    return (0 - $b) / (2 * $a);
+}
+elseif ($d > 0){
+    $x1 = ( 0 - $b - sqrt ($d)) / ( 2 * $a);
+    $x2 = ( 0 - $b + sqrt ($d)) / ( 2 * $a);
+    return array ('Первый корень' => $x1,  'Второй корень' => $x2);
+}
+}
+//$answer = quadraticEquation(8, 5, 7);
+//echo "The answer is .(quadraticEquation(8, 5, 7));";
+quadraticEquation(8, 5, 7);
 
 // Работа с массивами
 /*
