@@ -8,6 +8,10 @@ declare(strict_types=1);
  можно (и нужно) сохранять в сессии • Для расчета результатов теста сравните ответы пользователя (хранятся в сессии) с
  заранее определенными правильными ответами (могут храниться, например, в массиве или переменных). • После окончания
  текста сессию следует очистит*/
+if (isset($_POST['answer1'])){
+    session_start();
+    $_SESSION['answer1'] = (int)$_POST['answer1'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +20,17 @@ declare(strict_types=1);
     <title>session</title>
 </head>
 <body>
-<p>Question 1:</p>
-<p>1 + 1 = ?</p>
+<h1>Question 1:</h1>
+
 <form action="Task2.phtml" method="post">
-    <input type="text" name="answer1"/>
-    <input type="submit"/>
+    <p>1 + 1 = ?</p>
+    <label for="1" type="radio"> 2
+        <input id="1" type="text" name="answer1"/> <br>
+    </label>
+    <label for="2" type="radio"> 4
+        <input id="2" type="text" name="answer1"/> <br>
+    </label>
+    <input type="submit" value="Далее"/>
 </form>
 </body>
 </html>

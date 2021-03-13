@@ -12,11 +12,16 @@ $_SESSION['answer1'] = $answer1;
 </head>
 <body>
 <p>Question 2:</p>
-<p>2 + 2 = ?</p>
+
 <form action="Task3.phtml" method="post">
-    <input type="text" name="answer2"/>
-    <input type="submit"/>
-</form>
+    <p>2 + 2 = ?</p>
+    <label for="1" type="radio"> 6
+        <input id="1" type="text" name="answer2"/> <br>
+    </label>
+    <label for="2" type="radio"> 4
+        <input id="2" type="text" name="answer2"/> <br>
+    </label>
+    <input type="submit" value="Далее"/>
 
 </body>
 </html>

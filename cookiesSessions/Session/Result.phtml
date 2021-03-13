@@ -1,14 +1,20 @@
 <?php
 declare(strict_types=1);
+
+$rightAnswers = array(
+    'answer1' => 1,
+    'answer2' => 2,
+    'answer3' => 1
+);
+
+if (isset($_POST['answer3'])) {
+    $answer3 = (int)($_POST['answer3']);
+}
+
 session_start();
 $answer1 = $_SESSION['answer1'];
 $answer2 = $_SESSION['answer2'];
-$answer3 = $_POST['answer3'];
-if(($answer1 == 2) && ($answer2 == 4) && ($answer3 == 6) ){
-    echo 'Good for you !';
-} else{
-    echo 'You need some more math in your life.';
-}
+
 session_destroy();
 
 ?>
@@ -19,7 +25,18 @@ session_destroy();
     <title>session3</title>
 </head>
 <body>
-
+<h1>Test.Results</h1>
+<p>Question 1:
+    <?php if (isset($rightAnswers['answer3'])) {
+        if ($answer1 === $rightAnswers['answer1'] &&
+            $answer2 === $rightAnswers['answer2'] &&
+            $answer3 === $rightAnswers['answer3']) {
+            echo 'Right';
+        } else {
+            echo 'You need to try one more time';
+        }
+    }
+    ?></p>
 
 </body>
 </html>
