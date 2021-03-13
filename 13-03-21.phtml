@@ -142,7 +142,10 @@ declare(strict_types=1);
 //Задача 7: Работа с cookie
 //Спросите дату рождения пользователя. При следующем заходе на сайт напишите сколько дней осталось до его дня рождения.
 //Если сегодня день рождения пользователя - поздравьте его!
-
+if (!empty ($_POST['birthday'])){
+    setcookie('birthday', $_POST['birthday']);
+}
+date_diff(time(), strtotime($_COOKIE['birthday']));
 ?>
 <form method="post" action="" enctype="multipart/form-data">
     <label for="date">Введите дату рождения:
@@ -152,6 +155,6 @@ declare(strict_types=1);
 
 </form>
 <?php
-setcookie('birthday', $_COOKIE(['birthday']));
-var_dump($_COOKIE);
+
+var_dump($_POST);
 ?>
