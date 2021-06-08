@@ -1,0 +1,26 @@
+<?php
+declare(strict_types=1);
+session_start();
+$answer2 = $_POST['answer2'];
+$_SESSION['answer2'] = $answer2;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session2</title>
+</head>
+<body>
+<p>Question 3:</p>
+
+<form action="Result.phtml" method="post">
+    <p>3 + 3 = ?</p>
+    <label for="1" type="radio"> 6
+        <input id="1" type="text" name="answer3"/> <br>
+    </label>
+    <label for="2" type="radio"> 5
+        <input id="2" type="text" name="answer3"/> <br>
+    </label>
+    <input type="submit" value="Далее"/>
+</body>
+</html>
