@@ -1,0 +1,205 @@
+<!--Используем класс Car c видео урока-->
+
+<?php
+//class Car
+//{
+////<!--1) Добавить классу 3 свойства на свое усмотрение (например: количество дверей, стоимость, ...). Одному из свойств
+////присвоить значение по умолчанию.-->
+//    public $color = 'White';
+//    public $maxSpeed = 150;
+//    public $fuelConsumption;
+//    public $brand = 'NoName';
+//
+//    const ONE = 2;
+//    const TWO = 5;
+//    const THREE = 12;
+////<!--7) Добавить статический метод getMaxConstant(). Этот метод находит наибольшую из констант класса и возвращает её
+////значение. Не забывайте, что статические методы принадлежат классу, и вызываются из контекста класса.-->
+//    public static function getMaxConstant(): int
+//    {
+//         echo(max(self::FIRST, self::SECOND, self::THIRD));
+//}
+////<!--5) Написать функцию fuelConsumption() для расчета количества топлива, затраченного на поездку на заданную дистанцию.
+////Используйте свойство объекта $fuel (расход топлива на 100 км). Задача похожа на пример из занятия.-->
+//    public function calcFuelConsumption(int $distance): float
+//    {
+//        $fuel = $this->fuelConsumption / 100;
+//        $fuel = $fuel * $distance;
+//        return $fuel;
+//    }
+//
+////<!--4) Для двух оставшихся задать свойства используя конструктор (написать констуктор для-->
+////<!--инициализации объекта).-->
+//    public function __construct(string $color = "", int $maxSpeed = 0, int $maxFuelConsumption = 0, string $brand = "")
+//    {
+//        $this->color = $color;
+//        $this->maxSpeed = $maxSpeed;
+//        $this->fuelConsumption = $maxFuelConsumption;
+//        $this->brand = $brand;
+//        echo '<pre>' . $brand;
+//    }
+//}
+//
+////<!--2) Создать 4 объекта класса Car.-->
+////<!--3) Для двух объектов задать значения свойств, используя обращение к свойству (например,-->
+////<!--$car1>price).-->
+//$car1 = new Car;
+//$car1->brand = 'BMW';
+//$car1->color = 'Red';
+//$car1->fuelConsumption = 14;
+//$car1->maxSpeed = 250;
+//echo '<br>Car spent fuel per distance ' . $car1->calcFuelConsumption(1000);
+//echo ' liters';
+//
+//$car2 = new Car;
+//$car2->brand = 'Jaguar';
+//$car2->maxSpeed = 230;
+//$car2->fuelConsumption = 13;
+////echo '<br>Car spent fuel per distance '.$car2->fuelСonsumption(1000); echo' liters';
+//$car3 = new Car('black', 150, 10, 'Audi');
+//$car4 = new Car('Silver', 110, 9.5, 'Aston Martin');
+//
+////<!--6) Добавить в класс 3 числовых константы (со значениями, например, 2,5,12). Распечатать значения констант в коде
+////программы (вне класса).-->
+//echo '<br>' . Car::one . '<br>' . Car::two . '<br>' . Car::three;
+//echo '<br>' . Car::getMaxConstant();
+////var_dump($car3);
+////var_dump($car4);
+//
+//?>
+
+
+<!--Задача 2-->
+<?php
+
+abstract class Figure
+{
+    //<!--1) Создать класс Figure - плоская геометрическая фигура. У этого класса есть такие свойства: площадь, цвет.
+    //И константа: количество сторон.-->
+    public $color;
+    public $square;
+
+    //<!--2) Для класса Figure написать метод infoAbout(). Этот метод возвращает сообщение: "Это геометрическая фигура!".-->
+    public function infoAbout(): string
+    {
+        return 'Это геометрическая фигура!';
+    }
+
+    abstract public function getArea(): float;
+}
+
+
+//<!--3) От класса Figure унаследовать классы: Rectangle, Triangle, Square. 4) Добавить для Rectangle приватные свойства
+//a,b - длины сторон.-->
+class Rectangle extends Figure
+{
+    private $a;
+    private $b;
+    const SIDES_COUNT = 4;
+
+    //<!--8) Создать конструкторы для классов Rectangle для инициализации значений длин сторон.-->
+    public function __construct(int $a, int $b)
+    {
+        $this->a = $a;
+        $this->b = $b;
+    }
+
+    public function getArea(): float
+    {
+        return $this->a * $this->b;
+    }
+
+    final public function infoAbout(): string
+    {
+        return 'Это ' . __CLASS__ . '. У него ' . self::SIDES_COUNT . ' cторон.<br>';
+    }
+}
+
+//<!--6) Добавить для Triangle приватные свойства a, b, c - длины сторон.-->
+class Triangle extends Figure
+{
+    private $a;
+    private $b;
+    private $c;
+    const SIDES_COUNT = 3;
+
+    //<!--8) Создать конструкторы для классов Triangle для инициализации значений длин сторон.-->
+    public function __construct(int $a, int $b, int $c)
+    {
+        $this->a = $a;
+        $this->b = $b;
+        $this->c = $c;
+    }
+
+    public function getArea(): float
+    {
+        $p = ($this->a + $this->b + $this->c) / 2;
+
+        return sqrt($p * ($p - $this->a) * ($p - $this->b) * ($p - $this->c));
+    }
+
+    final public function infoAbout(): string
+    {
+        return 'Это ' . __CLASS__ . '. У него ' . self::SIDES_COUNT . ' cторон.<br>';
+    }
+}
+
+//<!--5) Добавить для Square приватное свойство a - длина стороны.-->
+//<!--7) Для каждого из классов Rectangle, Triangle, Square определить значение константы: количество сторон.-->
+//<!--Например, для квадрата: const SIDES_COUNT = 4;-->
+class Square extends Figure
+{
+    private $a;
+    const SIDES_COUNT = 4;
+
+    //<!--8) Создать конструкторы для классов Square для инициализации значений длин сторон.-->
+    public function __construct(int $a)
+    {
+        $this->a = $a;
+    }
+
+    public function getArea(): float
+    {
+        return $this->a * $this->a;
+    }
+
+    final public function infoAbout(): string
+    {
+        return 'Это ' . __CLASS__ . '. У него ' . self::SIDES_COUNT . ' cторон.<br>';
+    }
+}
+
+
+$triangle = new Triangle(3, 4, 5);
+$triangle2 = new Triangle(4, 4, 5);
+
+$square = new Square(3);
+$square2 = new Square(4);
+
+$rectangle = new Rectangle(3, 4);
+$rectangle2 = new Rectangle(5, 4);
+
+echo $square->infoAbout();
+echo $triangle->infoAbout();
+echo $rectangle->infoAbout();
+
+echo $square->getArea() . '<br>';
+echo $square2->getArea() . '<br>';
+
+echo $triangle->getArea() . '<br>';
+echo $triangle2->getArea() . '<br>';
+
+echo $rectangle->getArea() . '<br>';
+echo $rectangle2->getArea() . '<br>';
+?>
+<!--9) Для каждого из классов Rectangle, Triangle, Square реализовать метод getArea() - подсчет площади.
+Методы возвращают значение площади. Подсказки ниже.-->
+<!--10) Для каждого из классов Rectangle, Triangle, Square переопределить метод infoAbout() так, что б он возвращал
+строку такого содержания: (пример для квадрата):-->
+<!--"Это класс квадрата. У него 4 стороны".-->
+<!--Аналогично для других классов.-->
+<!--Подсказка: использовать константу класса для вывода количество сторон.-->
+<!--11) Сделать методы infoAbout() финальными.-->
+<!--10) Для каждого класса Rectangle, Triangle, Square создать по 2 объекта (с передачей-->
+<!--значений длин сторон в конструктор).-->
+<!--11) Вызвать для всех объектов методы getArea(), вывести результаты.-->
