@@ -1,0 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['login'])) {
+    header('HTTP/1.0 403 Forbidden');
+    echo 'You are forbidden!';
+    ?>
+    <a href="index.phtml">Login</a>
+    <?php
+} else { ?>
+    <h2>Page 2</h2>
+<?php } ?>
+
